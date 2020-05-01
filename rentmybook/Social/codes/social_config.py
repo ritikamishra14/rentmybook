@@ -28,10 +28,11 @@ class social_configuration:
                        user_lat=user_lat,
                        user_lng=user_lng)
             new_user.save()
+            retrun True
         except Exception as ex:
             print(ex)
             traceback.print_exc()
-
+        retrun False
 
     def complete_user(self, gender, address, dob, city, postel_code, contact_no):
         pass

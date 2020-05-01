@@ -6,7 +6,7 @@ class BOOK(models.Model):
 
    id = models.CharField(max_length=50, primary_key=True)
    book_name = models.CharField(max_length = 50)
-   book_image = models.ImageField(upload_to='images/' )
+   book_image = models.ImageField(upload_to='image/' )
    author = models.CharField(max_length = 50)
    publisher = models.CharField(max_length=200)
    owner_user_id = models.CharField(max_length=200)

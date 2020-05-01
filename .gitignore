@@ -1,0 +1,14 @@
+__pycache__/
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+rentmybook/*.manifest
+rentmybook/*.spec
+rentmybook/*.log
+rentmybook/local_settings.pydb.sqlite3
+#Environment
+rentmybook/Envs/
+rentmybook/db.sqlite3-journal
+rentmybook/settings.json
+/.vscode
+rentmybook/.idea/

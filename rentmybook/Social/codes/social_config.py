@@ -54,5 +54,5 @@ class social_configuration:
     def get_user_by_user_id(self, user_id):
         pass
 
-    # def generate_user_obj(self, ):
+    # def generate_user_obj(self):
 

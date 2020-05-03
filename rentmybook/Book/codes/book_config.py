@@ -29,7 +29,7 @@ class book_configuration:
             print(ex)
             traceback.print_exc()
 
-    #def edit_book_photo(self, id, image_list):
+    def edit_book_photo(self, id, image_list):
         
           
     def delete_book(self, ids: list):

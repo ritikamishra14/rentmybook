@@ -7,13 +7,12 @@ class social_configuration:
     def _init_(self):
         pass
 
-    def add_user(self,email_id, gender ,date_of_creation, user_image, name,
+    def add_user(self,email_id, gender , user_image, name,
                  address1, address2, landmark, state, city, zip_code,
                  status, contact, time_zone, user_lat, user_lng):
         try:
             new_user = USER(email_id=email_id,
                             gender=gender,
-                            date_of_creation=date_of_creation,
                             user_image=user_image,
                             name=name,
                             address1=address1,

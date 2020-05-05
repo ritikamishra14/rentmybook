@@ -7,9 +7,10 @@ social_instance = social_configuration()
 
 
 def add_user(request):
-
-    try:
-        email_id = str(request.POST.get('email_id'))
+    if request.method == 'POST':
+    json_data = json.loads(request.body) # request.raw_post_data w/ Django < 1.4
+    try:        
+        email_id = str(json_data['email_id'])
         gender = str(request.POST.get('gender'))
         date_of_creation = str(request.POST.get('date_of_creation'))
         user_image = str(request.POST.get('user_image'))

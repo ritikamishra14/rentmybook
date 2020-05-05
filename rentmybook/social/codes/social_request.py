@@ -34,7 +34,7 @@ def add_user(request):
                                     contact, time_zone, user_lat, user_lng):
             jsonresponse = JsonResponse({'msg':'SUCCESS'}, status= 200 , safe=False)
             return jsonresponse
-    except Exception as e:
+    except Exception as _:
         traceback.print_exc()
 
     jsonresponse = JsonResponse({'msg':  'FAILURE'}, status= 500, safe=False)

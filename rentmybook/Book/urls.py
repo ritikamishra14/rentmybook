@@ -3,7 +3,7 @@ from Book.codes import book_request
 
 urlpatterns = [
     url(r'^addbook$',book_request.add_book, name="addbook"),
-    # url(r'^completeuser/$', social_request.complete_user, name="completeuser"),
+    url(r'^getbookbybookid/$', book_request.get_book_by_book_id, name="getbookbybookid"),
     # url(r'^updateprofilephoto/$', social_request.update_profile_photo, name="updateprofilephoto"),
     # url(r'^deleteuser/$', social_request.delete_user, name="deleteuser"),
     # url(r'^adduser/$', social_request.add_user, name="adduser"),

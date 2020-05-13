@@ -50,9 +50,9 @@ class social_configuration:
     def disable_user(self, user_id):
         pass
 
-    def get_user_by_emai_id(self, user_id):
+    def get_user_by_email_id(self, email_id):
     	try:
-    		user_row = USER.objects.get(id=user_id)
+    		user_row = USER.objects.get(id=email_id)
     	except:
     		user_row = None
     	if user_row is not None:

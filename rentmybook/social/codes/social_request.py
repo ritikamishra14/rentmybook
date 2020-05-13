@@ -39,3 +39,18 @@ def add_user(request):
 
     jsonresponse = JsonResponse({'msg':  'FAILURE'}, status= 500, safe=False)
     return jsonresponse
+
+ def get_user_by_email_id(request)
+    payload = json.loads(request.body)
+    response_message = {}    
+    print(payload)
+    try:
+        email_id=str(payload['email_id'])
+        response_message =social_instance.get_user_by_email_id(email_id)
+    except Exception as _:
+        response_message = None
+        traceback.print_exc()
+    jsonresponse = JsonResponse(response_message, status= 500, safe=False)
+    return jsonresponse
+
+ 

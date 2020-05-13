@@ -32,15 +32,14 @@ class book_configuration:
         return False
 
     def get_book_by_book_id(self,id):
-
+        all_entries = []
         try:
-            all_entries = BOOK.objects.get(id=id)
-            qs_json = serializers.serialize('json', all_entries)
-            return HttpResponse(qs_json, content_type='application/json')
-        
+            all_entries = BOOK.objects.get(id=id)        
         except Exception as ex:
             print(ex)
-            traceback.print_exc()       
+            traceback.print_exc()
+        if  all_entries is not None:
+            qs_json = serializers.serialize('json', all_entries)
  
 
     def edit_book_photo(self,id, image_list):

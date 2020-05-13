@@ -36,7 +36,7 @@ class social_configuration:
     def complete_user(self, gender, address, dob, city, postel_code, contact_no):
         pass
 
-    def upadate_profile_photo(self, user_name, email_id, contact):
+    def update_profile_photo(self, user_name, email_id, contact):
         pass
 
     def delete_user(self, ids: list):

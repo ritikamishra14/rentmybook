@@ -12,3 +12,5 @@ rentmybook/db.sqlite3-journal
 rentmybook/settings.json
 /.vscode
 rentmybook/.idea/
+rentmybook/social/migrations
+rentmybook/Book/migrations

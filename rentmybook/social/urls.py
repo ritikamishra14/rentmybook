@@ -9,7 +9,7 @@ urlpatterns = [
     # url(r'^adduser/$', social_request.add_user, name="adduser"),
     # url(r'^enableuser/$', social_request.enable_user, name="enableuser"),
     # url(r'^disableuser/$', social_request.disable_user, name="disableuser"),
-     url(r'^getuserbyemailid/$', social_request.get_user_by_emai_id, name="getuserbyemailid"),
+    url(r'^getuserbyemailid/$', social_request.get_user_by_email_id, name="getuserbyemailid"),
     # url(r'^getuserbyuserid/$', social_request.get_user_by_user_id, name="getuserbyuserid"),
 
 ]

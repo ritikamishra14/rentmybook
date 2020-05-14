@@ -1,5 +1,7 @@
-
 from social.models import USER
+from django.http import HttpResponse
+from django.http import JsonResponse
+from django.core.exceptions import ObjectDoesNotExist
 import traceback
 
 
@@ -51,17 +53,18 @@ class social_configuration:
         pass
 
     def get_user_by_email_id(self, email_id):
-    	try:
-    		user_row = USER.objects.get(id=email_id)
-    	except:
-    		user_row = None
-    	if user_row is not None:
-    		for user in user_row:
-    			user_obj = {}
-    			user_obj['email_id'] = user.email_id
-    			user_obj['gender'] = user.gender
+        try:
+            user_row = USER.objects.filter(email_id=email_id)
+        except ObjectDoesNotExist:
+            print("Either the entry or blog doesn't exist.")
+            user_row = None
+        if user_row is not None:
+            for user in user_row:
+                user_obj = {}
+                user_obj['email_id'] = user.email_id
+                user_obj['gender'] = user.gender
                 user_obj['date_of_creation'] = user.date_of_creation
-                user_obj['user_image'] = user.ser_image
+                #user_obj['user_image'] = user.user_image
                 user_obj['name'] = user.name
                 user_obj['address1'] = user.address1
                 user_obj['address2'] = user.address2
@@ -79,5 +82,4 @@ class social_configuration:
 
     def get_user_by_user_id(self, user_id):
         pass
-
     # def generate_user_obj(self):

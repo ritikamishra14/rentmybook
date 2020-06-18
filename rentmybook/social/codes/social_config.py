@@ -1,5 +1,7 @@
-
 from social.models import USER
+from django.http import HttpResponse
+from django.http import JsonResponse
+from django.core.exceptions import ObjectDoesNotExist
 import traceback
 
 
@@ -8,11 +10,12 @@ class social_configuration:
     def _init_(self):
         pass
 
-    def add_user(self,email_id, gender ,date_of_creation, user_image, name,
+    def add_user(self, id, email_id, gender, date_of_creation, user_image, name,
                  address1, address2, landmark, state, city, zip_code,
                  status, contact, time_zone, user_lat, user_lng):
         try:
-            new_user = USER(email_id=email_id,
+            new_user = USER(id=id,
+                            email_id=email_id,
                             gender=gender,
                             date_of_creation=date_of_creation,
                             user_image=user_image,
@@ -50,18 +53,18 @@ class social_configuration:
     def disable_user(self, user_id):
         pass
 
-    def get_user_by_emai_id(self, user_id):
-    	try:
-    		user_row = USER.objects.get(id=user_id)
-    	except:
-    		user_row = None
-    	if user_row is not None:
-    		for user in user_row:
-    			user_obj = {}
-    			user_obj['email_id'] = user.email_id
-    			user_obj['gender'] = user.gender
+    def get_user_by_email_id(self, email_id):
+        try:
+            user_row = USER.objects.filter(email_id=email_id)
+        except ObjectDoesNotExist:
+            print("Either the entry or blog doesn't exist.")
+            user_row = None
+        if user_row is not None:
+            for user in user_row:
+                user_obj = {}
+                user_obj['email_id'] = user.email_id
+                user_obj['gender'] = user.gender
                 user_obj['date_of_creation'] = user.date_of_creation
-                user_obj['user_image'] = user.ser_image
                 user_obj['name'] = user.name
                 user_obj['address1'] = user.address1
                 user_obj['address2'] = user.address2
@@ -79,5 +82,4 @@ class social_configuration:
 
     def get_user_by_user_id(self, user_id):
         pass
-
     # def generate_user_obj(self):

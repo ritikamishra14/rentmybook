@@ -13,12 +13,12 @@ class USER(models.Model):
     landmark = models.CharField(max_length=50)
     state = models.CharField(max_length=25)
     city = models.CharField(max_length=25)
-    zip_code = models.CharField(max_length=6)
-    status = models.CharField(max_length=20)
+    zip_code = models.CharField(max_length=6,null=True)
+    status = models.CharField(max_length=20,default='ACTIVE')
     contact = models.CharField(max_length=100)
-    time_zone = models.CharField(max_length=100, default='')
-    user_lat = models.FloatField()
-    user_lng = models.FloatField()
+    time_zone = models.CharField(max_length=100,null=True)
+    user_lat = models.FloatField(max_length=100, default=0.0)
+    user_lng = models.FloatField(max_length=100, default=0.0)
 
     class Meta:
         db_table = 'USER'

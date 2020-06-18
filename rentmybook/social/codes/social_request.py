@@ -15,26 +15,14 @@ def add_user(request):
 
     try:
         email_id = str(payload['email_id'])
-        gender = str(payload['gender'])
-        date_of_creation = str(payload['date_of_creation'])
-        user_image = str(payload['user_image'])
         name = str(payload['name'])
         address1 = str(payload['address1'])
-        address2 = str(payload['address2'])
-        landmark = str(payload['landmark'])
         state = str(payload['state'])
         city = str(payload['city'])
-        zip_code = str(payload['zip_code'])
-        status = str(payload['status'])
         contact = str(payload['contact'])
-        time_zone = str(payload['timezone'])
-        user_lat = str(payload['user_lat'])
-        user_lng = str(payload['user_lng'])
 
-        if social_instance.add_user(email_id, gender ,date_of_creation,
-                                    user_image, name, address1, address2,
-                                    landmark, state, city, zip_code, status,
-                                    contact, time_zone, user_lat, user_lng):
+        if social_instance.add_user(email_id, name, address1, state,
+                                    city,contact):
             jsonresponse = JsonResponse({'msg':'SUCCESS'}, status= 200 , safe=False)
             return jsonresponse
     except Exception as _:
@@ -63,3 +51,90 @@ def get_user_by_email_id(request):
     
     jsonresponse = JsonResponse(response_message, status= 200, safe=False)
     return jsonresponse
+
+@csrf_exempt
+def delete_user(request):
+
+    payload = json.loads(request.body)
+
+    try:
+        email_id = str(payload['email_id'])
+        response_message = social_instance.delete_user(email_id)
+    except Exception as _:
+        response_message = None
+        traceback.print_exc()
+    jsonresponse = JsonResponse(response_message, status= 200, safe=False)
+    return jsonresponse
+
+@csrf_exempt
+def enable_user(request):
+    payload = json.loads(request.body)
+
+    try:
+        email_id = str(payload['email_id'])
+        response_message = social_instance.enable_user(email_id)
+    except Exception as _:
+        response_message = None
+        traceback.print_exc()
+    jsonresponse = JsonResponse(response_message, status= 200, safe=False)
+    return jsonresponse
+
+@csrf_exempt
+def disable_user(request):
+    payload = json.loads(request.body)
+
+    try:
+        email_id = str(payload['email_id'])
+        response_message = social_instance.disable_user(email_id)
+    except Exception as _:
+        response_message = None
+        traceback.print_exc()
+    jsonresponse = JsonResponse(response_message, status= 200, safe=False)
+    return jsonresponse
+
+@csrf_exempt
+def complete_user(request):
+    payload = json.loads(request.body)
+
+    try:
+        email_id = str(payload['email_id'])
+        gender = str(payload['gender'])
+        user_image = str(payload['user_image'])
+        address2 = str(payload['address2'])
+        landmark = str(payload['landmark'])
+        status = str(payload['status'])
+        zip_code = str(payload['zip_code'])
+        time_zone = str(payload['time_zone'])
+
+        if social_instance.complete_user(email_id,gender, user_image,
+                                         address2, landmark, status,
+                                         zip_code, time_zone
+                                         ):
+
+            jsonresponse = JsonResponse({'msg': 'SUCCESS'}, status=200, safe=False)
+        return jsonresponse
+
+    except Exception as _:
+        traceback.print_exc()
+
+    jsonresponse = JsonResponse({'msg': 'FAILURE'}, status=500, safe=False)
+    return jsonresponse
+
+@csrf_exempt
+def get_user_by_user_id(request):
+    payload = json.loads(request.body)
+    response_message = {}
+    print(payload)
+
+    try:
+        id = str(payload['id'])
+        response_message =social_instance.get_user_by_user_id(id)
+        print(response_message)
+    except Exception as _:
+        response_message = None
+        traceback.print_exc()
+
+    jsonresponse = JsonResponse(response_message, status= 200, safe=False)
+    return jsonresponse
+
+

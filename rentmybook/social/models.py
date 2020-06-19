@@ -2,7 +2,7 @@ from django.db import models
 
 
 class USER(models.Model):
-    id = models.CharField(max_length=50)
+    id = models.CharField(max_length=51)
     email_id = models.EmailField(max_length=50, primary_key=True)
     gender = models.CharField(max_length=15)
     date_of_creation = models.DateTimeField(auto_now_add=True)

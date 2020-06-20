@@ -14,3 +14,5 @@ rentmybook/settings.json
 rentmybook/.idea/
 rentmybook/social/migrations
 rentmybook/Book/migrations
+.idea/misc.xml
+.idea/workspace.xml
